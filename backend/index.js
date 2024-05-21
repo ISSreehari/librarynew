@@ -6,11 +6,12 @@ import mysql from 'mysql2/promise';
 dotenv.config();
 
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'root@123',
-  database: 'employee', 
-  connectionLimit: 10,
+    host : "bxcev0kmaiq9fgbmbhwr-mysql.services.clever-cloud.com",
+    password: "fYuY6k7lIoDRnnqxkBlA",
+    user:"u3lfqvszuygjnawp",
+    database:"bxcev0kmaiq9fgbmbhwr",
+    port: 3306,
+    connectionLimit: 10,
 });
 
 const PORT = 8000;
