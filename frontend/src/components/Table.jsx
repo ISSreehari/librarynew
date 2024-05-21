@@ -24,10 +24,13 @@ const Table = () => {
     },
     [searchName, searchAuthor]
   );
+  
+   const URL = "https://librarynew.onrender.com"
+  //  const URL = "http://localhost:8000/"
 
   const { data: books } = useQuery({
     queryFn: async () => {
-      const res = await axios.get("http://localhost:8000/getBooks"); // Updated URL to match MySQL backend endpoint
+      const res = await axios.get( URL + "/getBooks"); // Updated URL to match MySQL backend endpoint
       return res.data;
     },
     retry: 2,
