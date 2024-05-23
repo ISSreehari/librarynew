@@ -55,7 +55,7 @@ const Table = () => {
   };
 
   return (
-    <main className="h-screen flex flex-col bg-black text-white p-10 justify-center items-center w-full overflow-y-scroll">
+    <main className="flex flex-col bg-black text-white p-10 justify-center items-center w-full overflow-y-scroll">
       <div className="w-full flex justify-between mb-5 max-w-[900px]">
         <input
           className="p-2 rounded-md text-black"
