@@ -1,6 +1,6 @@
 import express from 'express';
-import dotenv from "dotenv"
-import cors from "cors"
+import dotenv from "dotenv";
+import cors from "cors";
 import mysql from 'mysql2/promise';
 
 dotenv.config();
@@ -35,6 +35,7 @@ app.post('/postBooks', async (req, res) => {
     const { name, author, description } = req.body;    
     try {
         const [result] = await pool.query('INSERT INTO books(name, author, description) VALUES(?, ?, ?)', [name, author, description]);
+        return res.status(201).json({ message: 'Book added successfully' });
     } catch (error) {
         console.error(error.message);
         return res.status(500).json({ error: 'Internal server error' });
@@ -45,6 +46,20 @@ app.get('/getBooks', async (req, res) => {
     try {
         const [result] = await pool.query('SELECT * FROM books');
         return res.status(200).json(result);
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.delete('/deleteBook', async (req, res) => {
+    const { name } = req.body;
+    try {
+        const [result] = await pool.query('DELETE FROM books WHERE name = ?', [name]);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+        return res.status(200).json({ message: 'Book deleted successfully' });
     } catch (error) {
         console.error(error.message);
         return res.status(500).json({ error: 'Internal server error' });
