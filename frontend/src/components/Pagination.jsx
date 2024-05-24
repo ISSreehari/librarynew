@@ -11,12 +11,8 @@ const Pagination = ({
     pages.push(i);
   }
 
-
-
-
-  
   return (
-    <div className="flex flex-row gap-3 mt-4">
+    <div className="flex flex-row flex-wrap gap-3 mt-4 justify-center">
       {pages.map((page, i) => {
         return (
           <button
@@ -25,13 +21,12 @@ const Pagination = ({
             className={
               page === currentPage
                 ? "bg-violet-500 px-2 py-2 rounded-md"
-                : "bg-purple-300 px-2 py-2 rounded-md" // Apply same padding to all buttons
+                : "bg-purple-300 px-2 py-2 rounded-md"
             }
-            style={{ minWidth: '100px', minHeight: '40px' }} // Define a specific width and height for all buttons
+            style={{ minWidth: '60px', minHeight: '40px' }}
           >
             {page}
           </button>
-          
         );
       })}
     </div>
