@@ -55,27 +55,31 @@ const Table = () => {
   };
 
   return (
-    <main className="flex flex-col bg-black text-white p-4 sm:p-10 justify-center items-center w-full overflow-y-scroll">
+    <main className="flex flex-col bg-black text-white p-4 sm:p-10 justify-center items-center w-full min-h-screen overflow-y-scroll">
+
+
       <div className="w-full flex flex-col sm:flex-row justify-between mb-5 max-w-[900px]">
-        <input
-          className="p-2 rounded-md text-black mb-2 sm:mb-0"
-          type="text"
-          placeholder="Search Name"
-          value={searchName}
-          onChange={(e) => setSearchName(e.target.value)}
-        />
+        <div className="flex flex-col mb-5 sm:mb-0">
+          <input
+            className="p-2 rounded-md text-black mb-2"
+            type="text"
+            placeholder="Search Name"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
+          />
+          <AddBook onAdd={handleAdd} />
+        </div>
         <h1 className="text-xl text-center mb-2 sm:mb-0">LIBRARY MANAGEMENT</h1>
-        <input
-          className="p-2 rounded-md text-black"
-          type="text"
-          placeholder="Search Author"
-          value={searchAuthor}
-          onChange={(e) => setSearchAuthor(e.target.value)}
-        />
-      </div>
-      <div className="w-full flex flex-col sm:flex-row justify-around mb-5 max-w-[900px] space-y-2 sm:space-y-0">
-        <AddBook onAdd={handleAdd} />
-        <DeleteBook onDelete={handleDelete} />
+        <div className="flex flex-col">
+          <input
+            className="p-2 rounded-md text-black mb-2"
+            type="text"
+            placeholder="Search Author"
+            value={searchAuthor}
+            onChange={(e) => setSearchAuthor(e.target.value)}
+          />
+          <DeleteBook onDelete={handleDelete} />
+        </div>
       </div>
       {books && (
         <table className="table-auto h-auto border-collapse w-full text-center p-2 max-w-[900px]">
